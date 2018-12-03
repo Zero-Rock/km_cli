@@ -10,7 +10,7 @@
     "lint-fix": "eslint --fix ./* --ext '.js'"
   },
   "bin": {
-    "hi": "./bin/test.js"
+    "km": "./bin/test.js"
   },
   "keywords": [
     "cli"
