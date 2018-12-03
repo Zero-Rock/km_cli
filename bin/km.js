@@ -1,15 +1,8 @@
 #!/usr/bin/env node
 const program = require('commander');
 const chalk = require('chalk');
-const exec = require('child_process').exec;
 
 process.env.KM_CLI_MODE_DEV = true;
-exec('echo "git is interesting >>111.json "', (error, stdout, stderr) => {
-  if (error !== null) {
-    console.log(`exec error: ${error}`);
-    console.log({ error, stdout, stderr });
-  }
-});
 
 program
   .version(require('../package').version)
