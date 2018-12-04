@@ -31,10 +31,25 @@ program
   .description('list files in current working directory')
   // 设置list这个命令的参数
   .option('-a, --all', 'Whether to display hidden files')
-  .option('-e, --ext <path>', 'Whether to display hidden files')
+  .option('-e, --ext <path>', 'Excluded folder')
   // list命令的实现体
   .action((options) => {
-    require('../lib/list')(options);
+    const rootPath = process.cwd();
+    require('../lib/list')(rootPath, options);
+  });
+
+program
+  // 声明km下有一个命令叫list
+  .command('tree')
+  // 给出list这个命令的描述
+  .description('list files in current working directory with tree')
+  // 设置list这个命令的参数
+  .option('-a, --all', 'Whether to display hidden files')
+  .option('-e, --ext <path>', 'Excluded folder')
+  // list命令的实现体
+  .action((options) => {
+    const rootPath = process.cwd();
+    require('../lib/tree')(rootPath, options);
   });
 
 program
