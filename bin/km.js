@@ -31,21 +31,10 @@ program
   .description('list files in current working directory')
   // 设置list这个命令的参数
   .option('-a, --all', 'Whether to display hidden files')
+  .option('-e, --ext <path>', 'Whether to display hidden files')
   // list命令的实现体
   .action((options) => {
-    const fs = require('fs');
-    // 获取当前运行目录下的文件信息
-    fs.readdir(process.cwd(), (err, files) => {
-      let list = files;
-      // 检查用户是否给了--all或者-a的参数，如果没有，则过滤掉那些以.开头的文件
-      if (!options.all) {
-        list = files.filter((file) => {
-          return file.indexOf('.') !== 0;
-        });
-      }
-      // 控制台将所有文件名打印出来
-      console.log(chalk.red(list.join('\n\r')));
-    });
+    require('../lib/list')(options);
   });
 
 program
