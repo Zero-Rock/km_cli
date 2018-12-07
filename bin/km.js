@@ -64,6 +64,16 @@ program
     require('../lib/config')(value, cleanArgs(cmd));
   });
 
+program
+  .command('init [path]')
+  .description('init project directory')
+  .description('generate a project from a remote template (legacy API, requires @vue/cli-init)')
+  .option('-c, --clone', 'Use git clone when fetching remote template')
+  .option('--offline', 'Use cached template')
+  .action((value, cmd) => {
+    require('../lib/init')(value, cmd);
+  });
+
 if (!process.argv.slice(2).length) {
   program.outputHelp();
 }
